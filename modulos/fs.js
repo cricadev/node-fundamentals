@@ -1,8 +1,8 @@
-const fs = require("node:fs/promises");
+import { readFile, writeFile, unlink } from "node:fs/promises";
 
 const read = async (path) => {
   try {
-    const data = await fs.readFile(path, "utf8");
+    const data = await readFile(path, "utf8");
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -11,7 +11,7 @@ const read = async (path) => {
 
 const write = async (path, content) => {
   try {
-    const data = await fs.writeFile(path, content);
+    const data = await writeFile(path, content);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -20,7 +20,7 @@ const write = async (path, content) => {
 
 const deleteFile = async (path) => {
   try {
-    const data = await fs.unlink(path);
+    const data = await unlink(path);
     console.log(data);
   } catch (error) {
     console.error(error);

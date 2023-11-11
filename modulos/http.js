@@ -1,4 +1,4 @@
-const http = require("http");
+import { createServer } from "http";
 
 const router = (req, res) => {
   console.log("Nueva petición");
@@ -6,7 +6,8 @@ const router = (req, res) => {
 
   switch (req.url) {
     case "/hola":
-      res.write("Hola, qué tal");
+      let saludo = hola();
+      res.write(saludo);
       res.end();
       break;
 
@@ -20,4 +21,7 @@ const router = (req, res) => {
   // res.write("Hola, ya sé usar HTTP de NodeJS");
   // res.end();
 };
-http.createServer(router).listen(3000);
+const hola = () => {
+  return "Hola, qué tal";
+};
+createServer(router).listen(3000);
